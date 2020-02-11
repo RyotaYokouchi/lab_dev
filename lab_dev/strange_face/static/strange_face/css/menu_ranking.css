@@ -1,0 +1,59 @@
+.ranking{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 90%;
+  background-color: lightyellow;
+  text-align: center;
+  margin: auto;
+  /* padding: 20% auto; */
+}
+.ranking .title{
+  font-size: 40px;
+  color: orange;
+}
+
+.ranking table{
+  border: solid 2px orange;
+  text-align: center;
+  width: 80%;
+  font-size: 20px;
+}
+.ranking tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+.ranking tr:hover{
+  background-color: #d4f0fd;
+}
+
+.ranking th,.ranking td{
+  text-align: center;
+  border: dashed 1px orange;
+  width: 25%;
+  padding: 10px;
+}
+
+.ranking_k {
+  font-size: 30px;
+  font-weight: 8px;
+}
+
+/* .ranking td.icon{
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+}
+
+.ranking td.icon.bird{
+  background-image: url(icon-bird.png)
+}
+
+.ranking td.icon.whale{
+  background-image: url(icon-whale.png)
+}
+
+.ranking td.icon.crab{
+  background-image: url(icon-crab.png)
+} */

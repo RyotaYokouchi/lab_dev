@@ -1,0 +1,13 @@
+body {
+  margin: 0px;
+}
+
+
+header {
+  padding: 100px 50px;
+  background-image:
+  url(../medias/header.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  margin: 0px 0px 0px 0px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+{% csrf_token %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>変顔競争の始まり</title>
+  <link rel="icon" href="favicon.ico">
+  <meta name="description" cintent="太郎のポートフォリオです。">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/header.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/footer.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/start.css'%}">
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+  <!-- <script src="https://docs.opencv.org/3.4.1/opencv.js"></script> -->
+</head>
+<body>
+  <header>
+  </header>
+  <div class="create_person">
+    {% csrf_token %}
+    <div class="error">
+      {% if error %}
+        <div class="main_error">{{error}}</div><br>
+        <div class="normal">真顔画像のエラー</div>
+        {% if error_list_normal %}
+          <ul class="error_list error_list_normal">
+            {% for error_normal in error_list_normal %}
+              <li>{{ error_normal }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div class="strange">変顔画像のエラー</div>
+        {% if error_list_strange %}
+          <ul class="error_list error_list_strange">
+            {% for error_strange in error_list_strange %}
+              <li>{{ error_strange }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% else %}
+        <div class="please_input">各種項目を入力して変顔力を競おう！</div>
+      {% endif %}
+    </div>
+    {% csrf_token %}
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+      {{ form.as_p }}
+      <button type="submit" class="save btn btn-default">変顔率計算</button>
+    </form>
+    <div class="camera_shot">
+      <video autoplay class="stream-video" width="500" height="350"></video><br>
+      <button onclick="normalFaceShot()">真顔を撮影！</button>
+      <button onclick="strangeFaceShot()">変顔を撮影！</button>
+      <button onclick="startVideo()">ビデオ開始！</button>
+      <button onclick="stopVideo()">ビデオ終了！</button><br>
+
+      <img class="normal-face-img" width="470" height="350"/>
+      <img class="strange-face-img" width="470" height="350"/>
+
+      <div class="canvas-show">
+        <canvas class="normal-face-canvas" style="display: none" width="470" height="350"></canvas>
+        <canvas class="strange-face-canvas" style="display: none" width="470" height="350"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="{% static 'strange_face/js/app.js'%}"></script>
+  <footer>
+    <ul>
+      <li>Tei-Lab</li>
+      <li>xxxxx@example.com</li>
+    </ul>
+  </footer>
+
+</body>
+</html>

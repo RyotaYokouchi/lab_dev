@@ -1,0 +1,38 @@
+.menu {
+  margin: 60px 30%;
+  list-style-type: none;
+  padding: 60px 0px;
+  background-color: #666666;
+  text-align: center;
+  width:auto;
+}
+
+.menu > li {
+   /* display: inline-block; */
+   padding: 10px 0px;
+   font-size: 20px;
+ }
+
+body > p {
+   font-size: 100px;
+   margin-top: 50px;
+   margin-bottom: 50px;
+   font-family: "serif";
+   text-align: center;
+ }
+
+ .btn-right-radius {
+   position: relative;
+   display: inline-block;
+   font-weight: bold;
+   padding: 0.25em 0.5em;
+   text-decoration: none;
+   color: #00BCD4;
+   background: #ECECEC;
+   border-radius: 0 15px 15px 0;
+   transition: .4s;
+ }
+
+ .btn-right-radius:hover {
+   background: #666666;
+ }

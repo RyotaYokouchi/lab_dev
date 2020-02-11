@@ -1,0 +1,118 @@
+import os
+import cv2
+import glob
+from scipy import ndimage
+from posix import listdir
+import shutil
+import random
+
+# 加工前の画像ディレクトリのパス
+original_dir_path = "./faces/original/"
+# 加工後の画像ディレクトリのパス
+augumente_faces_dir_path = "./faces/augumente_faces/"
+# テストディレクトリのパス
+test_dir_path = "./faces/test/"
+
+# 水増しの準備
+def data_augumente_pre():
+    # 水増しする
+    original_dir = os.listdir("./faces/original/")
+    for name in original_dir:
+        # DS.Storeを取ってきたらcontinue
+        if name == ".DS_Store":
+            continue
+
+        # 確認用の表示
+        print(name + "さんの顔を水増しします。")
+        # 水増しする人物の画像データを呼び出す
+        faces = listdir(original_dir_path + name)
+        # 加工した画像を置く場所を確保
+        os.makedirs(augumente_faces_dir_path + name, exist_ok=True)
+
+        # 一つずつ加工していく
+        for i in range(len(faces)):
+            if faces[i] == ".DS_Store"
+            # 画像読み込み
+            face_img = cv2.imread(original_dir_path + name + "/" + faces[i])
+            data_augumente(face_img, name)
+
+
+# 画像を加工して水増しする
+def data_augumente(face_img, name):
+
+    rotate_left = -10
+    rotate_center = 0
+    rotate_right = 10
+
+    # 左回転
+    img_rotate_left = ndimage.rotate(face_img, rotate_left)
+    cv2.imwrite(augumente_faces_dir_path + name + "/" + name + "_img_rotate_left.jpg", img_rotate_left)
+    threshold(img_rotate_left, rotate_left, name)
+    gaussian_blur(img_rotate_left, rotate_left, name)
+    reverse(img_rotate_left, rotate_left, name)
+
+    # 正面
+    img_rotate_center = ndimage.rotate(face_img, rotate_center)
+    cv2.imwrite(augumente_faces_dir_path + name + "/" + name + "_img_rotate_center.jpg", img_rotate_center)
+    threshold(img_rotate_center, rotate_center, name)
+    gaussian_blur(img_rotate_center, rotate_center, name)
+    reverse(img_rotate_center, rotate_center, name)
+
+    # 右回転
+    img_rotate_right = ndimage.rotate(face_img, rotate_right)
+    cv2.imwrite(augumente_faces_dir_path + name + "/" + name + "_img_rotate_rigt.jpg", img_rotate_right)
+    threshold(img_rotate_right, rotate_right, name)
+    gaussian_blur(img_rotate_right, rotate_right, name)
+    reverse(img_rotate_right, rotate_right, name)
+
+# ぼかし処理で水増し
+def gaussian_blur(face_img, rotate_value, name):
+    # ぼかし処理
+    img_filter = cv2.GaussianBlur(face_img, (5, 5), 0)
+    # 保存したファイル名
+    file_name = "/" + name + "_GaussianBlur_" + rotate_value + ".jpg"
+    # 書き込み
+    cv2.imwrite(augumente_faces_dir_path + name + file_name, img_filter)
+
+# 閾値処理で水増し
+def threshold(face_img, rotate_value, name):
+    # 閾値処理
+    img_thr = cv2.threshold(face_img, 100, 255, cv2.THRESH_TOZERO)[1]
+    # 保存したファイル名
+    file_name = "/" + name + "_threshold_" + rotate_value + ".jpg"
+    # 書き込み
+    cv2.imwrite(augumente_faces_dir_path + name + file_name, img_thr)
+
+# 反転処理で水増し
+def reverse(face_img, rotate_value, name):
+    # 反転処理
+    img_flip = cv2.flip(face_img, 1)
+    # 保存したファイル名
+    file_name = "/" + name + "_flip_" + rotate_value + ".jpg"
+    # 書き込み
+    cv2.imwrite(augumente_faces_dir_path + name + file_name, img_flip)
+
+
+# 画像データ一覧の中からランダムにテストデータに移行
+def random_sort():
+    random_v = 0.2
+    names = os.listdir(augumente_faces_dir_path)
+
+    for name in names:
+        # DS.Storeを取ってきたらcontinue
+        if name is ".DS_Store":
+            continue
+        # testディレクトリに人名のディレクトリを作成
+        os.mkdir(test_dir_path + name)
+        # 水増しした画像データの一覧取得
+        imgs = os.listdir(augumente_faces_dir_path + name)
+        # imgsの数を元に、その中の２割の番号を取得
+        random_numbers = random.sample(range(len(imgs)), k=round(len(imgs)*random_v))
+
+        # ランダムに選んだ番号を元に画像を移動
+        for random_number in random_numbers:
+            shutil.move(augumente_faces_dir_path + name + "/" + imgs[random_number], test_dir_path + name)
+
+if __name__ == '__main__':
+    data_augumente_pre()
+    random_sort()

@@ -1,0 +1,75 @@
+.create_person {
+  margin: 20px 5%;
+}
+
+.main_error {
+  font-size: 30px;
+}
+
+.error > ul, .error > ol {
+  /* background: #fcfcfc; */
+  padding: 0.5em 0.5em 0.5em 2em;/*ボックス内の余白*/
+}
+
+.error > ul li, .error > ol li {
+  line-height: 1.5; /*文の行高*/
+  padding: 0.5em 0; /*前後の文との余白*/
+}
+
+.normal {
+  background-color: #AEFFBD;
+  padding: 10px;
+  width: 18%;
+  text-align: left;
+}
+
+.strange {
+  background-color: #FFAD90;
+  padding: 10px;
+  width: 18%;
+  text-align: left;
+}
+
+.error_list_normal {
+  border: solid 6px #AEFFBD;/*線の種類 太さ 色*/
+  width: 40%;
+  text-align: left;
+  margin-top: 0px;
+  background: #CEF9DC;
+}
+
+.error_list_strange {
+  border: solid 6px #FFAD90;/*線の種類 太さ 色*/
+  width: 40%;
+  text-align: left;
+  margin-top: 0px;
+  background: #FFDBC9;
+}
+
+.please_input {
+  font-size: 25px;
+}
+
+.post-form {
+  background: #fcfcfc;/*背景色*/
+  border: solid 5px gray;/*線の種類 太さ 色*/
+  font-size: 20px;
+  padding: 15px 15px 50px 15px;
+  width: 30%;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.post-form {
+  float: left;
+  list-style: none;
+}
+
+.camera_shot {
+  /* float: left; */
+  list-style: none;
+}
+
+.stream-video {
+  margin: 0px 30px;
+}

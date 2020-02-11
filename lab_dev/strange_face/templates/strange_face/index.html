@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>変顔を競い合うサイトです。</title>
+  <link rel="icon" href="favicon.ico">
+  <meta name="description" cintent="太郎のポートフォリオです。">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/header.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/footer.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/index.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/top10ranking.css'%}">
+  <script type="text/javascript" src="{% static 'strange_face/js/faceVideo.js'%}"></script>
+</head>
+<body>
+  <header>
+  </header>
+  <p>変顔力!!</p>
+  <div class="ranking">
+    <p class="title">変顔ランキングトップ10!</p><br><br>
+    {% csrf_token %}
+    {% for student in students %}
+      {% if forloop.counter == 1 %}
+        <div class="rank_img no1_img">
+          <img class="icon" src="/images/images/css/ranking01.png"/>
+          <img class="face no1" src="/images/{{ student.strange_face }}"/>
+          <p class="rank no1_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 2 %}
+        <div class="rank_img no2_img">
+          <img class="icon" src="/images/images/css/ranking02.png"/>
+          <img class="face no2" src="/images/{{ student.strange_face }}"/>
+          <p class="rank no2_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 3 %}
+        <div class="rank_img no3_img">
+          <img class="icon" src="/images/images/css/ranking03.png">
+          <img class="face no3" src="/images/{{ student.strange_face }}">
+          <p class="rank no3_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 4 %}
+        <div class="rank_img no4_img">
+          <img class="icon" src="/images/images/css/ranking04.png">
+          <img class="face nother" src="/images/{{ student.strange_face }}">
+          <p class="rank nother_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 5 %}
+        <div class="rank_img no5_img">
+          <img class="icon" src="/images/images/css/ranking05.png">
+          <img class="face nother" src="/images/{{ student.strange_face }}">
+          <p class="rank nother_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 6 %}
+        <div class="rank_img no6_img">
+          <img class="icon" src="/images/images/css/ranking06.png">
+          <img class="face nother" src="/images/{{ student.strange_face }}">
+          <p class="rank nother_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 7 %}
+        <div class="rank_img no7_img">
+          <img class="icon" src="/images/images/css/ranking07.png">
+          <img class="face nother" src="/images/{{ student.strange_face }}">
+          <p class="rank nother_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 8 %}
+        <div class="rank_img no8_img">
+          <img class="icon" src="/images/images/css/ranking08.png">
+          <img class="face nother" src="/images/{{ student.strange_face }}">
+          <p class="rank nother_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 9 %}
+        <div class="rank_img no9_img">
+          <img class="icon" src="/images/images/css/ranking09.png">
+          <img class="face nother" src="/images/{{ student.strange_face }}">
+          <p class="rank nother_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+      {% elif forloop.counter == 10 %}
+        <div class="rank_img no10_img">
+          <img class="icon" src="/images/images/css/ranking10.png">
+          <img class="face nother" src="/images/{{ student.strange_face }}">
+          <p class="rank nother_rank">
+            {{ student.name }}：{{ student.strange_value }}pt
+          </p>
+        </div>
+
+      {% else %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <ul class="menu">
+    <li><a class="btn-right-radius" href="/">遊び方</a></li>
+    <li><a class="btn-right-radius" href="start/">はじめる</a></li>
+    <li><a class="btn-right-radius" href="ranking/">ランキング一覧</a></li>
+  </ul>
+  <footer>
+    <ul>
+      <li>Tei-Lab</li>
+      <li>xxxxx@example.com</li>
+    </ul>
+  </footer>
+</body>
+</html>

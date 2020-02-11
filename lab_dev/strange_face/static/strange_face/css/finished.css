@@ -1,0 +1,25 @@
+.strong_word {
+  text-shadow: 3px 3px 0 rgba(0,0,0,.1);
+  color: #ff3333;
+}
+
+.result {
+  font-size: 50px;
+  margin: 5%;
+}
+
+.result-top {
+  font-size: 30px;
+  margin: 5%;
+  margin-bottom: 0%;
+}
+
+.ranking {
+  font-size: 50px;
+  margin: 5%;
+}
+
+.ranking_word {
+  text-shadow: 3px 3px 0 rgba(0,0,0,.1);
+  color: gold;
+}

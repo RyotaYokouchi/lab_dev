@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="リソース名 &apos;FileMove_/CurrentImg/front-20190617-062043.jpg&apos; を &apos;front-20180101-010203.jpg&apos; に変更します" description="リソース &apos;front-20190617-062043.jpg&apos; の名前変更" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="CurrentImg/front-20190617-062043.jpg" name="front-20180101-010203.jpg" stamp="1576565474934" updateReferences="true"/>
+</session>

@@ -1,0 +1,28 @@
+import cv2
+import dlib
+import numpy
+
+# 各種定義
+IMG = "IMG"
+
+# ウィンドウの準備
+cv2.namedWindow(IMG)
+
+# 画像読み込み＆グレースケール化
+img = cv2.imread("/Users/yokouchiryouta/Desktop/test.jpg")
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+cascade_face_file = '/usr/local/opt/opencv/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml'
+face_cascade = cv2.CascadeClassifier(cascade_face_file)
+face_list = face_cascade.detectMultiScale(img_gray, minNeighbors=10, minSize=(100, 100))
+face_list.append([0, 0, 0, 0])
+numpy.append(face_list, [[0, 0, 0, 0]])
+print(type(face_list))
+print(face_list)
+# トラッキングされた画像を表示
+# cv2.imshow(IMG, img)
+# cv2.waitKey(0)
+#
+# # 終了処理
+# cv2.destroyAllWindows()
+

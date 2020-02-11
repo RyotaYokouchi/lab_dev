@@ -1,0 +1,45 @@
+import cv2
+import dlib
+import numpy
+from scipy import ndimage
+
+# 各種定義
+IMG = "IMG"
+
+# ウィンドウの準備
+cv2.namedWindow(IMG)
+
+# 画像読み込み＆グレースケール化
+img = cv2.imread("/Users/yokouchiryouta/Desktop/test2.jpg")
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# cascade_face_file = '/usr/local/opt/opencv/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml'
+# face_cascade = cv2.CascadeClassifier(cascade_face_file)
+# face_list = face_cascade.detectMultiScale(img_gray, minNeighbors=10, minSize=(100, 100))
+#face_list.append(numpy.array([[0, 0, 0, 0]]))
+# numpy.append(face_list, numpy.array([[1, 2, 3, 4]]), axis=0)
+# print(type(face_list))
+# print(face_list)
+
+gamma = 1.8
+
+lookUpTable = numpy.zeros((256, 1), dtype = 'uint8')
+
+for i in range(256):
+    lookUpTable[i][0] = 255 * pow(float(i) / 255, 1.0 / gamma)
+img_gamma = cv2.LUT(img, lookUpTable)
+#トラッキングされた画像を表示
+
+rotate_list = list(range(-10, 10))
+for rotate_value in rotate_list:
+    # 回転させる
+    rotate_img = ndimage.rotate(img_gamma, rotate_value)
+    if rotate_value == -10 or rotate_value == 0 or rotate_value == 9:
+        print("aa")
+        cv2.imshow("Gunma", rotate_img)
+        cv2.imwrite("/Users/yokouchiryouta/Desktop/test" + str(rotate_value) +"_ganma.jpg", rotate_img)
+cv2.waitKey(0)
+
+# 終了処理
+cv2.destroyAllWindows()
+

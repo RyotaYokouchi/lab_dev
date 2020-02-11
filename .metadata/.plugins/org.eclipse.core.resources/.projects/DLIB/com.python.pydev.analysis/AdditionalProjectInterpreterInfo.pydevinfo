@@ -1,0 +1,24 @@
+-- VERSION_5
+-- START DISKCACHE_2
+/Users/yokouchiryouta/lab_Dev/.metadata/.plugins/org.eclipse.core.resources/.projects/DLIB/com.python.pydev.analysis/v2_indexcache
+Hello|1560071805000000000|/Users/yokouchiryouta/lab_Dev/DLIB/Hello.py
+-- END DISKCACHE
+-- START DICTIONARY
+2
+1=/Users/yokouchiryouta/lab_Dev/DLIB/Hello.py
+2=Hello
+-- END DICTIONARY
+-- START TREE 1
+8
+dif|1|diff_table!1^7#1*19@
+hal|1|half_img!1^58#1*19@
+hig|1|hight!1^56#1*19@
+lut|2|LUT_HC!1^9#1*19@LUT_LC!1^10#1*19@
+max|1|max_table!1^6#1*19@
+min|1|min_table!1^5#1*19@
+src|1|src!1^55#1*19@
+wid|1|width!1^57#1*19@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

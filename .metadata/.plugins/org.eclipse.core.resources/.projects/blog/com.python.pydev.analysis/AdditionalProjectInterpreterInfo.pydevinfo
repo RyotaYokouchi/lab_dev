@@ -1,0 +1,69 @@
+-- VERSION_5
+-- START DISKCACHE_2
+/Users/yokouchiryouta/lab_Dev/.metadata/.plugins/org.eclipse.core.resources/.projects/blog/com.python.pydev.analysis/v2_indexcache
+learningのコピー|1575020863000000000|/Users/yokouchiryouta/lab_Dev/blog/learningのコピー.py
+test2|1572271058000000000|/Users/yokouchiryouta/lab_Dev/blog/test2.py
+test|1575009306000000000|/Users/yokouchiryouta/lab_Dev/blog/test.py
+keras_test|1569577826000000000|/Users/yokouchiryouta/lab_Dev/blog/keras_test.py
+learning|1577003304000000000|/Users/yokouchiryouta/lab_Dev/blog/learning.py
+get_face|1571219294000000000|/Users/yokouchiryouta/lab_Dev/blog/get_face.py
+-- END DISKCACHE
+-- START DICTIONARY
+12
+11=/Users/yokouchiryouta/lab_Dev/blog/test.py
+2=learningのコピー
+8=test2
+5=/Users/yokouchiryouta/lab_Dev/blog/get_face.py
+12=test
+1=/Users/yokouchiryouta/lab_Dev/blog/learningのコピー.py
+4=keras_test
+3=/Users/yokouchiryouta/lab_Dev/blog/keras_test.py
+7=/Users/yokouchiryouta/lab_Dev/blog/test2.py
+10=learning
+6=get_face
+9=/Users/yokouchiryouta/lab_Dev/blog/learning.py
+-- END DICTIONARY
+-- START TREE 1
+38
+aug|1|augumente_faces_dir_path!1^12#1*19@
+bat|1|batch_size!3^15#1*35@
+cap|2|cap!5^22#1*51@cap!7^12#1*67@
+cas|1|cascade_path!5^10#1*51@
+cnt|2|cnt_face!5^17#1*51@cnt_max!5^15#1*51@
+dat|4|data_augumente!1^42#5*18@data_augumente_pre!9^17#5*82@data_augumente!9^42#5*82@data_augumente_pre!1^17#5*18@
+dev|1|DEVICE_ID!11^8#1*99@
+epo|1|epochs!3^17#1*35@
+esc|1|ESC_KEY!11^4#1*99@
+fac|7|faces!5^19#1*51@faceCascade!5^12#1*51@face2!11^13#1*99@face_list!5^34#5*51@face!5^88#1*51@face1!11^12#1*99@face_path!11^10#1*99@
+fil|1|filename!5^75#5*51@
+fps|1|fps!7^14#1*67@
+fra|1|FRAME_RATE!11^6#1*99@
+gau|2|gaussian_blur!9^70#5*82@gaussian_blur!1^70#5*18@
+his|1|history!3^52#1*35@
+img|3|img_face!5^42#9*51@img_gray!5^32#5*51@img!5^30#5*51@
+inp|0|
+int|1|INTERVAL!11^5#1*99@
+key|2|key!11^21#1*99@key!7^29#3*67@
+mod|1|model!3^35#1*35@
+n|0|
+nam|1|NAME!5^6#1*51@
+num|2|num!5^62#1*51@num_classes!3^16#1*35@
+ori|2|original_dir_path!9^10#1*83@original_dir_path!1^10#1*19@
+pat|1|path!5^68#1*51@
+ran|2|random_sort!9^98#5*82@random_sort!1^98#5*18@
+rev|2|reverse!9^88#5*82@reverse!1^88#5*18@
+sco|1|score!3^53#1*35@
+sea|0|
+siz|1|size!7^15#1*67@
+tda|1|tdatetime!5^64#1*51@
+tes|2|test_dir_path!9^14#1*83@test_dir_path!1^14#1*19@
+thr|2|threshold!1^79#5*18@threshold!9^79#5*82@
+tra|1|train_dir_path!9^12#1*83@
+tst|1|tstr!5^65#1*51@
+url|1|URL!7^11#1*67@
+x_t|2|x_test!3^23#1*35@x_train!3^22#1*35@
+y_t|2|y_test!3^33#1*35@y_train!3^32#1*35@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

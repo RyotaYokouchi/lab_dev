@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>変顔ランキングです。</title>
+  <link rel="icon" href="favicon.ico">
+  <meta name="description" cintent="太郎のポートフォリオです。">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/header.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/footer.css'%}">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/ranking.css'%}"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/toMenu.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'strange_face/css/menu_ranking.css'%}">
+</head>
+<body>
+  <header>
+  </header>
+
+  <div class="ranking">
+    <p class="title">変顔ランキング一覧</p>
+    <table align="center">
+      <tr>
+        <th>順位</th>
+        <th>変顔</th>
+        <th>名前</th>
+        <th>変顔力</th>
+      </tr>
+      {% csrf_token %}
+      {% for student in students %}
+        <tr class="ranking_k">
+          <td>{{ forloop.counter }}</td>
+          <td><img src="/images/{{ student.strange_face }}" width="150" height="110"></td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.strange_value }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <a href="/strange_face" class="btn-flat-logo">
+    <i class="fa fa-chevron-right"></i> メインメニューへ
+  </a>
+
+  <footer>
+    <ul>
+      <li>Tei-Lab</li>
+      <li>xxxxx@example.com</li>
+    </ul>
+  </footer>
+
+</body>
+</html>

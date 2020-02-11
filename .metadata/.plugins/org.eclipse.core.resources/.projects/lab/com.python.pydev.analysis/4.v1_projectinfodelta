@@ -1,0 +1,13 @@
+INSTUPlab.compareFaceParts3
+/Users/yokouchiryouta/lab_Dev/lab/lab/compareFaceParts3.py
+INFOS:&&3|1|2|0|3|7|1&&3|4|2|0|3|13|1&&3|5|2|0|3|14|1&&3|6|2|0|3|24|1&&3|7|2|0|3|26|1&&3|8|2|0|3|30|1&&3|9|2|0|3|33|1&&3|10|2|0|3|36|5
+IMG=1
+lab.compareFaceParts3=2
+img=4
+img_gamma=8
+/Users/yokouchiryouta/lab_Dev/lab/lab/compareFaceParts3.py=3
+rotate_img=10
+img_gray=5
+gamma=6
+lookUpTable=7
+rotate_list=9

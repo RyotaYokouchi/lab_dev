@@ -1,0 +1,108 @@
+import os
+import cv2
+import glob
+from scipy import ndimage
+from posix import listdir
+"""
+Faceディレクトリから画像を読み込んで回転、ぼかし、閾値処理をしてFaceEditedディレクトリに保存する.
+"""
+
+original_dir_path = "./faces/original/"
+augumente_faces_dir_path = "./faces/augumente_faces/"
+original_dir = os.listdir("./faces/original/")
+
+def data_augumente():
+    # 水増しする
+    for name in original_dir:
+        # DS.Storeを取ってきたらcontinue
+        if name is ".DS.Store":
+            continue
+
+        # 確認用の表示
+        print(name + "さんの顔を水増しします。")
+        # 水増しする人物の画像データを呼び出す
+        faces = listdir(original_dir_path + name)
+        # 加工した画像を置く場所を確保
+        os.makedirs(augumente_faces_dir_path + name, exist_ok=True)
+
+        # 一つずつ加工していく
+        for i in len(faces):
+            # 画像読み込み
+            face_img = cv2.imread(original_dir_path + name + "/" + faces[i])
+            rotate(face_img, name)
+
+
+# 画像を回転させる
+def rotate(face_img, name):
+
+    rotate_left = -15
+    rotate_center = 0
+    rotate_right = 15
+
+    # 左回転
+    img_rotate_left = ndimage.rotate(face_img, rotate_left)
+    threshold(img_rotate_left, rotate_left, name)
+
+    # 正面
+    img_rotate_center = ndimage.rotate(face_img, rotate_center)
+    threshold(img_rotate_center, rotate_center, name)
+
+    # 右回転
+    img_rotate_right = ndimage.rotate(face_img, rotate_right)
+    threshold(img_rotate_right, rotate_right, name)
+
+# 閾値処理で水増し
+def threshold(face_img, rotate_value, name):
+    # 閾値処理
+    img_thr = cv2.threshold(face_img, 100, 255, cv2.THRESH_TOZERO)[1]
+    # 保存したファイル名
+    file_name = "/" + name + "_threshold_" + rotate_value + ".jpg"
+    # 書き込み
+    cv2.imwrite(augumente_faces_dir_path + name + file_name, img_thr)
+
+
+for name in SearchName:
+    print("{}の写真を増やします。".format(name))
+    in_dir = "./Face/"+name+"_face/*"
+    out_dir = "./FaceEdited/"+name
+    os.makedirs(out_dir, exist_ok=True)
+    in_jpg=glob.glob(in_dir)
+    img_file_name_list=os.listdir("./Face/"+name+"_face/")
+    for i in range(len(in_jpg)):
+        #print(str(in_jpg[i]))
+        img = cv2.imread(str(in_jpg[i]))
+        if img is None:
+            break
+        # 回転
+        for ang in [-10,0,10]:
+            img_rot = ndimage.rotate(img,ang)
+            img_rot = cv2.resize(img_rot,ImgSize)
+            fileName=os.path.join(out_dir,str(i)+"_"+str(ang)+".jpg")
+            cv2.imwrite(str(fileName),img_rot)
+            # 閾値
+            img_thr = cv2.threshold(img_rot, 100, 255, cv2.THRESH_TOZERO)[1]
+            fileName=os.path.join(out_dir,str(i)+"_"+str(ang)+"thr.jpg")
+            cv2.imwrite(str(fileName),img_thr)
+            # ぼかし
+            img_filter = cv2.GaussianBlur(img_rot, (5, 5), 0)
+            fileName=os.path.join(out_dir,str(i)+"_"+str(ang)+"filter.jpg")
+            cv2.imwrite(str(fileName),img_filter)
+
+print("画像の水増しに成功しました！")
+
+# 2割をテストデータに移行
+import shutil
+import random
+
+for name in SearchName:
+    in_dir = "./FaceEdited/"+name+"/*"
+    in_jpg=glob.glob(in_dir)
+    img_file_name_list=os.listdir("./FaceEdited/"+name+"/")
+    #img_file_name_listをシャッフル、そのうち2割をtest_imageディテクトリに入れる
+    random.shuffle(in_jpg)
+    os.makedirs('./test/' + name, exist_ok=True)
+    for t in range(len(in_jpg)//5):
+        shutil.move(str(in_jpg[t]), "./test/"+name)
+
+#from keras.utils.np_utils import to_categorical
+from tensorflow.keras.utils import to_categorical
