@@ -28,7 +28,7 @@ Keras-Applications==1.0.8
 Keras-Preprocessing==1.0.9
 keras-utils==1.0.13
 kiwisolver==1.0.1
-lxml==4.4.1
+lxml==4.9.1
 Markdown==2.6.11
 matplotlib==3.0.2
 natsort==6.2.0
